@@ -1,0 +1,43 @@
+Task link:
+https://www.codewars.com/kata/acronym-generator/train/java
+
+Programming language:
+Java
+
+CODE:
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class AcronymGenerator {
+
+    public static String createAcronym(String lastName, String firstName) {
+        
+        String Acr = "";
+        Acr += Character.toUpperCase(firstName.charAt(0));
+        
+        for ( int i = 0; i < firstName.length(); i++ ){
+          if ( firstName.charAt(i) == ' ' || firstName.charAt(i) == '-'){
+            Acr += Character.toUpperCase(firstName.charAt(i+1));
+            break;
+          }
+        }
+        
+        if ( lastName.indexOf("von ") != -1 || lastName.indexOf("VON ") != -1 ){
+          Acr += "v";
+          lastName = lastName.replaceAll( "von ", "" );
+          lastName = lastName.replaceAll( "VON ", "" );
+        }
+
+        Acr += Character.toUpperCase(lastName.charAt(0));
+        
+        for ( int i = 0; i < lastName.length(); i++ ){
+          if (  lastName.charAt(i) == ' ' || lastName.charAt(i) == '-' ){
+            Acr += Character.toUpperCase(lastName.charAt(i+1));
+            break;
+          }
+        }
+
+        return Acr;
+    }
+}

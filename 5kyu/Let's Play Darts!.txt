@@ -1,0 +1,69 @@
+Task link:
+https://www.codewars.com/kata/lets-play-darts/train/java
+
+Programming language:
+Java
+
+CODE:
+
+public class Dartboard {
+
+    double l1;
+    int[] score = { 17, 2, 15, 10, 6, 13, 4, 18, 1, 20, 5, 12, 9, 14, 11, 8, 16, 7, 19 };
+    double angle;
+
+    public String getScore(double x, double y)
+    {
+        String result = "";
+        
+        boolean reverse = false;
+        if ( x < 0 ) { reverse = true; }
+           
+        angle = angleFind(x, y);
+        
+        if ( l1 < 6.35 ){
+            return "DB";
+        } else if ( l1 > 6.35 && l1 < 15.9 ) {
+            return "SB";
+        } else if ( l1 > 99 && l1 < 107 ) {
+            result += "T";
+        } else if ( l1 > 162 && l1 < 170) {
+            result += "D";
+        } else if ( l1 > 170 ) { return "X"; }
+
+        if ( angle < 9 ){
+            result += "3";
+        } else {
+
+            angle -= 9;
+
+            int sector = ( (int) ( angle / 18 ) ) + 1;
+
+            System.out.println( " TES " + sector );
+            
+            if ( sector == 10 ) { result += score[9]; } 
+            else if ( reverse == true ) {
+                result += score[19 - sector];
+            } else {
+                result += score[sector - 1];
+            }
+
+        }
+
+      return result;
+
+    }
+    
+    public double angleFind(double x, double y) {
+
+        l1 = Math.sqrt(x*x + y*y);
+        double l2 = 40;
+
+        double scalar = -40*y;
+        double modular = l1*l2;
+
+        double angle = (Math.acos(scalar/modular)*180)/Math.PI;
+        return angle;
+
+    }
+}

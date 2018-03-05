@@ -1,0 +1,28 @@
+Task link:
+https://www.codewars.com/kata/localize-the-barycenter-of-a-triangle
+
+Programming language:
+Java
+
+CODE:
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+class Barycenter {
+    
+    public static double[] barTriang(double[] x, double[] y, double[] z)
+    {
+        double coord[] = {(x[0]+y[0]+z[0])/3, (x[1]+y[1]+z[1])/3};
+        
+        NumberFormat nf = new DecimalFormat("0.0000");
+
+        String x1 = nf.format(coord[0]);
+        String y1 = nf.format(coord[1]);
+          
+        coord[0] = Double.valueOf(x1);
+        coord[1] = Double.valueOf(y1);
+        return coord;
+  }
+}

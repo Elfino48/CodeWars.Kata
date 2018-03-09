@@ -1,0 +1,41 @@
+Task link:
+https://www.codewars.com/kata/rectangle-into-squares/train/cpp
+
+Programming language:
+C++
+
+CODE:
+
+#include <vector>
+#include <iostream>
+
+
+class SqInRect
+{
+  public:
+  static std::vector<int> sqInRect(int lng, int wdth){
+  
+  std::vector<int> hello;
+  
+    if ( lng == wdth )
+      return {};
+      
+    
+    while ( lng != 0 ){
+        
+      if ( lng < wdth ){
+        int temp = lng;
+        lng = wdth;
+        wdth = temp;
+      }
+
+      lng = lng - wdth;
+      hello.push_back ( wdth ); 
+      
+    }
+  
+  
+    return hello;
+  }
+
+};

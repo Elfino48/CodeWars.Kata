@@ -1,0 +1,37 @@
+Task link:
+https://www.codewars.com/trainer/java
+
+Programming language:
+Java
+
+CODE:
+
+public class Kata {
+  public static int findEvenIndex(int[] arr) {
+    int Rsum = 0;
+    int Lsum = 0;
+    
+      for ( int i = 1; i < arr.length; i++ ){ 
+        
+        Rsum += arr[i];
+      
+      }
+    
+      for ( int i = 0; i < arr.length; i++ ){
+        
+        System.out.println( "Lsum is " + Lsum + " Rsum is " + Rsum );
+        
+         if ( Lsum == Rsum ){
+           return i;
+         }
+         
+         Lsum += arr[i];
+         if ( i != arr.length - 1 )
+           Rsum -= arr[i+1];
+         
+      }
+    
+    return -1;
+  
+  }
+}

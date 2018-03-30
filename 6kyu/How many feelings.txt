@@ -1,0 +1,52 @@
+Task link:
+https://www.codewars.com/kata/5a33ec23ee1aaebecf000130/train/cpp
+
+Programming language:
+C++
+
+CODE:
+
+#include <iostream>
+
+using namespace std;
+
+std::string countFeelings(std::string s, std::vector<string> arr)
+{
+   int feel = 0;
+   
+   for ( int i = 0; i < arr.size(); i++ ){
+      
+        string keyword = arr[i];
+        
+        string scopy = s;
+
+        int l = 0;
+        
+        for ( int j = 0; j < keyword.length(); j++ ){
+          for ( int z = 0; z < scopy.length(); z++ ){
+            if ( scopy[z] == keyword[j] ){
+              
+              l++;
+              
+              char p = scopy[z];
+              
+              scopy.erase ( scopy.find(p), 1 );
+        
+              break;
+              
+            }
+          }
+        }
+        
+        if ( l == keyword.length() ) feel++;
+      
+    }
+    
+    string mssg = to_string(feel);
+    
+      if ( feel == 1 ) mssg += " feeling.";
+      else mssg += " feelings.";
+    
+    return mssg;
+    
+}
